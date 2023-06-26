@@ -13,6 +13,8 @@ connectDB();
 
 // initialized middlewares //
 import cookieParser from "cookie-parser";
+import cors from "cors";
+app.use(cors());
 app.use(express.json()); // allows to send & receive JSON
 app.use(express.urlencoded({ extended: true })); // allows to send & receive x-www-form-urlencoded
 app.use(cookieParser());
