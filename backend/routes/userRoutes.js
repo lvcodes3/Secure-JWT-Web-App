@@ -2,7 +2,7 @@
 import express from "express";
 const router = express.Router();
 
-// controller logic //
+// user controller logic //
 import {
   registerUser,
   authUser,
@@ -11,11 +11,17 @@ import {
   updateUserProfile,
 } from "../controllers/userController.js";
 
+// authMiddleware for protected routes only //
+import { protect } from "../middleware/authMiddleware.js";
+
 // public routes //
 router.post("/", registerUser);
 router.post("/auth", authUser);
 router.post("/logout", logoutUser);
 // private routes //
-router.route("/profile").get(getUserProfile).put(updateUserProfile);
+router
+  .route("/profile")
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
 
 export default router;
