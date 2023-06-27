@@ -1,11 +1,13 @@
+// Dependencies //
+import { ReactNode } from "react";
 // Bootstrap //
 import { Container, Row, Col } from "react-bootstrap";
 
-type ChildrenProps = {
-  children: string;
+type FormContainerProps = {
+  children: ReactNode;
 };
 
-const FormContainer: React.FC<ChildrenProps> = ({ children }) => {
+const FormContainer = ({ children }: FormContainerProps) => {
   return (
     <Container>
       <Row className="justify-content-md-center mt-5">
